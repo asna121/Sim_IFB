@@ -268,7 +268,7 @@ static void Update_Register(void *argument)
                         ifb_test.IFB_IFB_Temp = (*temp_package).envIFB_IFB_Temp;
 
                         /* Print to Screen*/
-                        sprintf (buff, "%04X", ifb_test.IFB_5V_Current);
+                        sprintf (buff, "%04X", ifb_test.IFB_INMS_Temp);
                         prvNewPrintString(buff,6);
                 
                         vPortFree(temp_package);

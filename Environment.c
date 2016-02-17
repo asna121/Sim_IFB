@@ -252,11 +252,11 @@ static void MSC_Application(void)
 static void readfile_in_disk(FIL* myfile, uint8_t* temp_rtext, uint8_t size_of_item,  uint32_t* temp_byteread)
 {
     /* Read data from the text file */
-    f_read(myfile, temp_rtext, size_of_item, (void *)temp_byteread);
+    f_read(myfile, temp_rtext, size_of_item*5, (void *)temp_byteread);
     
     if(((*temp_byteread)/size_of_item)!=5)
     {
-     //prvNewPrintString("\n",1);
+     //prvNewPrintString("Yo",2);
     #ifdef repeat
     f_rewind(myfile);
     #endif
@@ -317,10 +317,10 @@ static void Update_Data_in_Period(void *argument)
             if(i==0)
             {
                 /* Read data from the text file */
-                readfile_in_disk(&MyFile_IFB_5V_C, rtext_1, size_fileIFB_5V_Current*5, &bytesread_1);
-                readfile_in_disk(&MyFile_IFB_3_3V_C, rtext_2, size_fileIFB_3_3V_Current*5, &bytesread_2);
-                readfile_in_disk(&MyFile_IFB_INMS_T, rtext_3, size_fileIFB_INMS_Temp*5, &bytesread_3);
-                readfile_in_disk(&MyFile_IFB_IFB_T, rtext_4, size_fileIFB_IFB_Temp*5, &bytesread_4);             
+                readfile_in_disk(&MyFile_IFB_5V_C, rtext_1, size_fileIFB_5V_Current, &bytesread_1);
+                readfile_in_disk(&MyFile_IFB_3_3V_C, rtext_2, size_fileIFB_3_3V_Current, &bytesread_2);
+                readfile_in_disk(&MyFile_IFB_INMS_T, rtext_3, size_fileIFB_INMS_Temp, &bytesread_3);
+                readfile_in_disk(&MyFile_IFB_IFB_T, rtext_4, size_fileIFB_IFB_Temp, &bytesread_4);             
             }
             
             /*創造空間 大小為次系統的Package*/
